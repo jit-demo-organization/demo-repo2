@@ -1,4 +1,12 @@
  resource "aws_s3_bucket" "bucket1" {
+  lifecycle_rule {
+    id      = "terraform_file.tf"
+    prefix  = "terraform_file.tf/"
+    enabled = true
+    expiration {
+      days = 10
+    }
+ }
    bucket = "example"
  }
  
