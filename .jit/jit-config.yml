@@ -1,4 +1,4 @@
 folders:
-  - path: /*
+  - path: /folder
     exclude:
-      - python_file*
+      - /python_file*
