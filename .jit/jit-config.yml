@@ -1,0 +1,4 @@
+folders:
+  - path: /
+    exclude:
+      - /python_file.py
