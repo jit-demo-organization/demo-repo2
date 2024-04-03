@@ -1,14 +1,15 @@
-resource "aws_dynamodb_table" "example_table" {
-  name           = "example-table"
-  billing_mode   = "PAY_PER_REQUEST"
-  hash_key       = "id"
+resource "aws_s3_bucket" "example_bucket" {
+  bucket = "example-bucket"
+}
 
-  attribute {
-    name = "id"
-    type = "S"
-  }
+resource "aws_s3_bucket_cors_configuration" "example_cors" {
+  bucket = aws_s3_bucket.example_bucket.id
 
-  server_side_encryption {
-    enabled = true
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "POST", "PUT", "DELETE"]
+    allowed_origins = ["*"]
+    expose_headers  = ["ETag"]
+    max_age_seconds = 3000
   }
 }
